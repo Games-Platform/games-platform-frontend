@@ -21,6 +21,10 @@
     "jsx": "react-jsx",
     "baseUrl": "./",
     "paths": {
+      "@/*": ["*", "src/*"],
+      "@/assets/*": ["*", "src/assets/*"],
+      "@/components/*": ["*", "src/components/*"],
+      "@/store/*": ["*", "src/store/*"]
       "@/*": [
         "*",
         "src/*"
@@ -36,6 +40,10 @@
       "@/types/*": [
         "*",
         "src/types/*"
+      ],
+      "@/store/*": [
+        "*",
+        "src/store/*"
       ]
     }
   },
