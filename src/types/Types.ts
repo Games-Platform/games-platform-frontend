@@ -10,6 +10,6 @@ export const enum EnumColors {
   WHITE = 'white',
 }
 
-export type TSizes = (typeof EnumSizes)[keyof typeof EnumSizes];
+export type TSizes = EnumSizes.MEDIUM | EnumSizes.LARGE | EnumSizes.DEFAULT;
 export type TColors = (typeof EnumColors)[keyof typeof EnumColors];
 export type TLinkSizes = EnumSizes.SMALL | EnumSizes.MEDIUM;
