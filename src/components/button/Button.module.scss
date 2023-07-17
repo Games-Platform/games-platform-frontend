@@ -1,0 +1,27 @@
+@import '@/assets/utils/_Variables';
+
+.button {
+  font-weight: $fw-700;
+  border: none;
+  border-radius: 5px;
+}
+
+.default {
+  width: 100%;
+}
+
+.medium {
+  width: 223px;
+}
+
+.large {
+  width: 372px;
+}
+
+.orange {
+  background-color: $color-orange;
+}
+
+.white {
+  background-color: $color-white;
+}
