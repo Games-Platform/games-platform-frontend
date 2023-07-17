@@ -1,0 +1,25 @@
+@import '@/assets/utils/_Variables';
+@import '@/assets/utils/_Mixins';
+
+body {
+  background-color: $color-black-1;
+  font-family: $ff-poppins;
+  font-size: $fs-16;
+}
+
+.header {
+  @include flex-center;
+  justify-content: space-between;
+  min-height: 60px;
+  color: $color-white;
+}
+
+.title {
+  color: $color-white;
+  font-size: $fs-29;
+  font-weight: $fw-800;
+}
+
+.headerRight {
+  display: flex;
+}

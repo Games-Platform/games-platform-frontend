@@ -1,0 +1,24 @@
+@import '@/assets/utils/_Variables';
+@import '@/assets/utils/_Mixins';
+
+.navItem {
+  @include flex-center;
+  margin-right: 42px;
+}
+
+.navLink {
+  @include flex-center;
+}
+
+.svgIcon {
+  @include flex-center;
+  margin-left: 6px;
+}
+
+.btnLink {
+  width: 129px;
+  background-color: $color-orange;
+  font-weight: $fw-600;
+  border: none;
+  border-radius: 5px;
+}
