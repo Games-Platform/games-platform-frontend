@@ -1,11 +1,9 @@
 @import '@/assets/utils/_Variables';
 @import '@/assets/utils/_Mixins';
 
-.dropdown-btn {
+.dropdown-list {
   font-size: 16px;
   background: $color-black-1;
-  border: none;
-  height: 40px;
   cursor: pointer;
 }
 
@@ -40,16 +38,6 @@
     padding-top: 8px;
   }
 }
-
-// .dropdown-item:not(first-child) {
-//   padding-top: 15px;
-//   padding-bottom: 15px;
-// }
-
-// .dropdown-item:not(last-child) {
-//   padding-top: 15px;
-//   padding-bottom: 15px;
-// }
 
 .isVisible {
   visibility: visible;

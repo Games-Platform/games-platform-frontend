@@ -19,13 +19,10 @@ const DropDown = () => {
   return (
     <div className="container">
       <div className="dropdown">
-        <button
-          type="button"
-          onClick={handleDropdownClick}
-          className={styles['dropdown-btn']}
-        >
+        <div onClick={handleDropdownClick} className={styles['dropdown-list']}>
           <Avatar />
-        </button>
+        </div>
+
         <div
           className={`${styles['dropdown-items']} ${
             dropdownState ? `${styles.isVisible}` : `${styles.isHidden}`
