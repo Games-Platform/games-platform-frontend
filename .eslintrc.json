@@ -53,6 +53,8 @@
     "react/prop-types": "off",
     "react-hooks/exhaustive-deps": "off",
     "react/jsx-no-bind": "off",
+    "eslintjsx-a11y/click-events-have-key-events": "off",
+    "eslintjsx-a11y/no-static-element-interactions": "off",
     "react/function-component-definition": [
       "error",
       {
