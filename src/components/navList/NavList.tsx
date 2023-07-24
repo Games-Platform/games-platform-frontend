@@ -1,12 +1,13 @@
-import styles from '@/components/navList/NavList.module.scss';
 import NavItemComponent from '@/components/navItemComponent/NavItemComponent';
+
+import styles from '@/components/navList/NavList.module.scss';
 
 const NavList = () => {
   const navItems = [
     { name: 'Home', to: '/' },
     { name: 'Top rated', to: '/' },
     { name: 'Search', to: '/', svgIcon: true },
-    { name: 'Log In', to: '/', linkBtn: true },
+    { name: 'Log In', to: '/login', linkBtn: true },
   ];
 
   return (

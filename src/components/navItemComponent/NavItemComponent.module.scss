@@ -4,6 +4,10 @@
 .navItem {
   @include flex-center;
   margin-right: 42px;
+
+  &:last-child {
+    margin-right: 0;
+  }
 }
 
 .navLink {
@@ -16,9 +20,12 @@
 }
 
 .btnLink {
-  width: 129px;
   background-color: $color-orange;
   font-weight: $fw-600;
   border: none;
   border-radius: 5px;
+
+  a {
+    padding: 0 45px;
+  }
 }

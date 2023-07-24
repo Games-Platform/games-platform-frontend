@@ -1,0 +1,18 @@
+@import '@/assets/utils/_Variables';
+
+body {
+  background-color: $color-black-1;
+  font-family: $ff-poppins;
+  font-size: $fs-16;
+  color: $color-white;
+}
+
+.title {
+  font-size: $fs-40;
+  font-weight: $fw-800;
+}
+
+.login-title {
+  margin-top: 122px;
+  text-align: center;
+}

@@ -1,7 +1,7 @@
 const EyeOpened = () => (
   <svg
-    width="33"
-    height="22"
+    width="28"
+    height="18"
     viewBox="0 0 33 22"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"

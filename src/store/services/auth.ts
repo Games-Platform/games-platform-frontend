@@ -1,4 +1,4 @@
-import { ILoginUser, IRegisterUser, IUser } from '@/store/types/User';
+import { ILoginUser, IRegisterUser, IUser } from '@/types/Types';
 import apiService from './api';
 
 export const authService = apiService.injectEndpoints({

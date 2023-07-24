@@ -1,6 +1,6 @@
 const EyeClosed = () => (
   <svg
-    width="35"
+    width="28"
     height="18"
     viewBox="0 0 35 18"
     fill="none"
