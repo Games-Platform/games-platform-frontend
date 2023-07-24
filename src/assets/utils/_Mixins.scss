@@ -3,3 +3,24 @@
   align-items: center;
   justify-content: center;
 }
+
+@mixin pseudo-element(
+  $bgColor,
+  $right: auto,
+  $left: 0,
+  $top: 50%,
+  $transformY: 50%,
+  $transformX: 0,
+  $height: 1px,
+  $width: 24px
+) {
+  content: '';
+  position: absolute;
+  left: $left;
+  right: $right;
+  top: $top;
+  transform: translate($transformX, $transformY);
+  height: $height;
+  width: $width;
+  background-color: $bgColor;
+}

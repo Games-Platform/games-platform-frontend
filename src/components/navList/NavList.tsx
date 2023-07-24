@@ -1,6 +1,9 @@
 import { NavLink } from 'react-router-dom';
+
 import NavItemComponent from '@/components/navItemComponent/NavItemComponent';
 import DropDown from '../dropdown/DropDown';
+import styles from '@/components/navList/NavList.module.scss';
+
 import styles from '@/components/navList/NavList.module.scss';
 
 const NavList = () => {

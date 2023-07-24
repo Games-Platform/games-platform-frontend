@@ -4,6 +4,10 @@
 .navItem {
   @include flex-center;
   margin-right: 42px;
+
+  &:last-child {
+    margin-right: 0;
+  }
 }
 
 .navLink {
@@ -16,27 +20,35 @@
   margin-left: 6px;
 }
 
-.active {
-  position: relative;
+.btnLink {
+  background-color: $color-orange;
+  font-weight: $fw-600;
+  border: none;
+  border-radius: 5px;
 
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    height: 4px;
-    margin-left: -5px;
-    border-radius: 10px;
-    background-color: $color-orange;
-  }
+  a {
+    padding: 0 45px;
+    .active {
+    position: relative;
 
-  &::before {
-    left: 0;
-    width: 36px;
-  }
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      height: 4px;
+      margin-left: -5px;
+      border-radius: 10px;
+      background-color: $color-orange;
+    }
 
-  &::after {
-    left: 40px;
-    width: 7px;
-  }
+    &::before {
+      left: 0;
+      width: 36px;
+    }
+
+    &::after {
+      left: 40px;
+      width: 7px;
+    }
 }

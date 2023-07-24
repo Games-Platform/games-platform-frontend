@@ -1,0 +1,50 @@
+@import '@/assets/utils/_variables.scss';
+@import '@/assets/utils/_mixins.scss';
+
+.form {
+  max-width: 955px;
+  margin: 50px auto 0 auto;
+}
+
+.form-input {
+  margin-bottom: 50px;
+}
+
+.or {
+  font-size: $fs-20;
+  text-align: center;
+  margin: 30px auto 0 auto;
+  position: relative;
+  padding-left: 8px;
+  padding-right: 8px;
+  max-width: 85px;
+
+  &:before {
+    @include pseudo-element($color-white);
+  }
+
+  &:after {
+    @include pseudo-element($color-white, 0, auto);
+  }
+}
+
+.googleLink {
+  width: 100%;
+  display: block;
+  padding: 16px 0;
+  background-color: $color-white;
+  border-radius: 9px;
+  color: $color-black-2;
+  @include flex-center;
+  position: relative;
+  font-size: $fs-20;
+  font-weight: $fw-500;
+  margin-top: 30px;
+
+  svg {
+    position: absolute;
+    left: 22px;
+    width: 38px;
+    height: 38px;
+  }
+}

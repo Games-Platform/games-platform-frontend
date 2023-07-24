@@ -1,0 +1,53 @@
+@import '@/assets/utils/_variables.scss';
+
+.wrapper {
+  position: relative;
+  margin: 12px 0;
+}
+
+.wrapper .input {
+  border-radius: 9px;
+  border: 1px solid $color-coal-light;
+  background: $color-black-2;
+  width: 100%;
+  padding: 16px 22px;
+  font-size: $fs-20;
+  color: $color-white;
+  transition: $transition-time all ease;
+}
+
+.wrapper input::placeholder {
+  color: transparent;
+}
+
+.wrapper .label {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 8px;
+  font-size: $fs-20;
+  padding: 0 10px;
+  color: $color-coal-light;
+  pointer-events: none;
+  transition: $transition-time all ease;
+}
+
+.wrapper .eye {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-35%);
+  right: 8px;
+  padding: 0 10px;
+  cursor: pointer;
+}
+
+.wrapper input:focus + .label,
+.wrapper input:not(:placeholder-shown) + .label {
+  transform: translate(-3px, -28px);
+  font-size: $fs-14;
+}
+
+.wrapper .error {
+  border-color: $color-red;
+  outline-color: $color-red;
+}
