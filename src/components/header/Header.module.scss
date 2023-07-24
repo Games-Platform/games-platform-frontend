@@ -17,5 +17,5 @@
 }
 
 .headerRight {
-  display: flex;
+  @include flex-center;
 }

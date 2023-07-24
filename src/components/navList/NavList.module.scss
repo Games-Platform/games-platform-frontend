@@ -1,3 +1,19 @@
+@import '@/assets/utils/_Mixins';
+@import '@/assets/utils/_Variables';
+
+.nav {
+  @include flex-center;
+}
+
 .navList {
   display: flex;
+}
+
+.loginLink {
+  @include flex-center;
+  width: 129px;
+  background-color: $color-orange;
+  font-weight: $fw-600;
+  border: none;
+  border-radius: 5px;
 }

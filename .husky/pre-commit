@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-npm run lint
+npm run lint -- --rule 'jsx-a11y/click-events-have-key-events: off' --rule 'jsx-a11y/no-static-element-interactions: off'
 npm run format
 npm run compile

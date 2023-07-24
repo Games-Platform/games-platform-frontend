@@ -12,6 +12,7 @@
 
 .navLink {
   @include flex-center;
+  height: 50px;
 }
 
 .svgIcon {
@@ -27,5 +28,27 @@
 
   a {
     padding: 0 45px;
-  }
+    .active {
+    position: relative;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      height: 4px;
+      margin-left: -5px;
+      border-radius: 10px;
+      background-color: $color-orange;
+    }
+
+    &::before {
+      left: 0;
+      width: 36px;
+    }
+
+    &::after {
+      left: 40px;
+      width: 7px;
+    }
 }
