@@ -1,0 +1,49 @@
+@import '@/assets/utils/_mixins.scss';
+@import '@/assets/utils/_variables.scss';
+
+.hero {
+  margin-top: 106px;
+}
+
+.heroWrapper {
+  @include flex-between;
+  padding-bottom: 90px;
+  position: relative;
+
+  &:after {
+    @include pseudo-element($color-grey, auto, 0, 100%, 0, 0, 1px, 100%);
+  }
+}
+
+.minititle {
+  color: $color-orange;
+  font-size: $fs-20;
+  font-weight: $fw-700;
+}
+
+.heroTitle {
+  margin-top: 17px;
+  font-size: $fs-50;
+  font-weight: $fw-700;
+  max-width: 480px;
+  line-height: 78px;
+}
+
+.description {
+  margin-top: 25px;
+  font-size: $fs-16;
+  font-weight: $fw-500;
+  line-height: 32px;
+  max-width: 480px;
+}
+
+.loginLink {
+  @include flex-center;
+  margin-top: 65px;
+  width: 223px;
+  background-color: $color-orange;
+  font-weight: $fw-400;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 0;
+}

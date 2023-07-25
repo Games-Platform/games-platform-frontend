@@ -1,0 +1,29 @@
+@import '@/assets/utils/_variables.scss';
+@import '@/assets/utils/_mixins.scss';
+
+.topRated {
+  margin-top: 60px;
+}
+
+.topRatedInfo {
+  @include flex-between;
+}
+
+.topRatedTitle {
+  font-size: $fs-35;
+  font-style: normal;
+  font-weight: $fw-600;
+}
+
+.topRatedLink {
+  background-color: $color-black-2;
+  width: 129px;
+  padding: 8px 0;
+  text-align: center;
+  border-radius: 6px;
+}
+
+.ratedGamesWrapper {
+  @include flex-between;
+  margin-top: 60px;
+}

@@ -1,7 +1,7 @@
 import Container from '../components/container/Container';
 
 const NotFound = () => (
-  <main style={{ display: 'flex', flex: '1' }}>
+  <main>
     <Container>
       <p>404</p>
     </Container>

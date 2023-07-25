@@ -1,10 +1,10 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import toast from 'react-hot-toast';
 import Button from '../button/Button';
-import ErrorMessage from '../error-message/ErrorMessage';
+import ErrorMessage from '../errorMessage/ErrorMessage';
 import Input from '../input/Input';
 import { Inputs } from '@/types/Types';
 import {
@@ -24,7 +24,12 @@ interface FormProps {
 
 const Form: React.FC<FormProps> = ({ children, isRegister }) => {
   const backendLink = import.meta.env.VITE_BACKEND_LINK;
+
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || '/';
+
   const {
     register,
     handleSubmit,
@@ -64,7 +69,7 @@ const Form: React.FC<FormProps> = ({ children, isRegister }) => {
   useEffect(() => {
     if (isSuccess) {
       toast.success(loggedUserData?.message);
-      navigate('/');
+      navigate(from, { replace: true });
     }
 
     if (error) {
@@ -77,7 +82,7 @@ const Form: React.FC<FormProps> = ({ children, isRegister }) => {
   useEffect(() => {
     if (registerIsSuccess) {
       toast.success(registerUserData?.message);
-      navigate('/');
+      navigate(from, { replace: true });
     }
 
     if (registerError) {

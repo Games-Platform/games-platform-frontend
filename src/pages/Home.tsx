@@ -1,8 +1,10 @@
-import Container from '../components/container/Container';
+import HeroSection from '../components/sections/hero/HeroSection';
+import TopRatedSection from '../components/sections/topRated/TopRatedSection';
 
 const Home = () => (
-  <Container>
-    <p>Home</p>
-  </Container>
+  <main>
+    <HeroSection />
+    <TopRatedSection />
+  </main>
 );
 export default Home;

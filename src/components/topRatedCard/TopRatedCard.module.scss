@@ -1,0 +1,22 @@
+@import '@/assets/utils/_mixins.scss';
+@import '@/assets/utils/_mixins.scss';
+
+.image {
+  img {
+    width: 260px;
+    height: 275px;
+  }
+}
+
+.ratings {
+  @include flex-center;
+  margin-top: 20px;
+
+  svg {
+    margin-right: 7px;
+  }
+
+  span {
+    margin-left: 5px;
+  }
+}

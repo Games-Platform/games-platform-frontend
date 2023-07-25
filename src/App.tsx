@@ -5,10 +5,11 @@ import Layout from './pages/Layout';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
-import RequireAuth from '@/components/require-auth/RequireAuth';
+import RequireAuth from '@/components/requireAuth/RequireAuth';
 import Footer from './components/footer/Footer';
 import NotFound from './pages/NotFound';
 import Register from './pages/Register';
+import ScrollToTop from './components/scrollToTop/ScrollToTop';
 
 const App = () => (
   <>
@@ -31,6 +32,7 @@ const App = () => (
     </Routes>
     <Footer />
     <Toaster />
+    <ScrollToTop />
   </>
 );
 
