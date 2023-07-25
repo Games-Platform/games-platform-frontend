@@ -8,6 +8,7 @@ import Profile from './pages/Profile';
 import RequireAuth from '@/components/require-auth/RequireAuth';
 import Footer from './components/footer/Footer';
 import NotFound from './pages/NotFound';
+import Register from './pages/Register';
 
 const App = () => (
   <>
@@ -17,6 +18,7 @@ const App = () => (
         {/* public routes */}
         <Route path="/" element={<Home />} />
         <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
 
         {/* private routes */}
         <Route element={<RequireAuth />}>

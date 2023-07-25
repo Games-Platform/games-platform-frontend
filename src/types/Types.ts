@@ -30,7 +30,7 @@ export interface ILoginUser {
 }
 
 export interface IRegisterUser {
-  username: string;
+  username?: string;
   email: string;
   password: string;
 }

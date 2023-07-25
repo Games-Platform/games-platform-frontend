@@ -8,13 +8,17 @@ const Footer = () => (
       <div className={styles['footer-wrapper']}>
         <div className={styles.copyright}>Copyright ® 2023 Developed by </div>
         <div className={styles.pavlo}>
-          <a href="https://github.com/stclamp">
+          <a target="_blank" href="https://github.com/stclamp" rel="noreferrer">
             Pavlo Yevtushenko
             <GitHub />
           </a>
         </div>
         <div className={styles.anton}>
-          <a href="https://github.com/Anton-Liada">
+          <a
+            target="_blank"
+            href="https://github.com/Anton-Liada"
+            rel="noreferrer"
+          >
             Anton Liada
             <GitHub />
           </a>

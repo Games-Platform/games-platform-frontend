@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import styles from '@/components/dropdown/DropDown.module.scss';
-import Avatar from '../icons/Avatar';
 import { useLogoutMutation } from '@/store/services/auth';
 import useAuth from '@/hooks/useAuth';
+import Avatar from '../avatar/Avatar';
 
 const DropDown = () => {
   const [dropdownState, setDropdownState] = useState(false);

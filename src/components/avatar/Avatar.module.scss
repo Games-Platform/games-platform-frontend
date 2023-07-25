@@ -1,0 +1,13 @@
+@import '@/assets/utils/_variables.scss';
+@import '@/assets/utils/_mixins.scss';
+
+.avatar {
+  background-color: $color-black-2;
+  color: $color-white;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  font-size: $fs-24;
+  font-weight: $fw-600;
+  @include flex-center;
+}

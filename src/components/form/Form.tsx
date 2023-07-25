@@ -7,7 +7,11 @@ import Button from '../button/Button';
 import ErrorMessage from '../error-message/ErrorMessage';
 import Input from '../input/Input';
 import { Inputs } from '@/types/Types';
-import { useCheckUserQuery, useLoginUserMutation } from '@/store/services/auth';
+import {
+  useCheckUserQuery,
+  useLoginUserMutation,
+  useRegisterUserMutation,
+} from '@/store/services/auth';
 import { loginSchema, registerSchema } from './schemas';
 import styles from './Form.module.scss';
 import Google from '../icons/Google';
@@ -34,6 +38,17 @@ const Form: React.FC<FormProps> = ({ children, isRegister }) => {
     { data: loggedUserData, error, isError, isLoading, isSuccess },
   ] = useLoginUserMutation();
 
+  const [
+    registerUser,
+    {
+      data: registerUserData,
+      error: registerError,
+      isError: registerIsError,
+      isLoading: registerIsLoading,
+      isSuccess: registerIsSuccess,
+    },
+  ] = useRegisterUserMutation();
+
   const { refetch } = useCheckUserQuery(null);
 
   const onLogin: SubmitHandler<Inputs> = async (data) => {
@@ -41,9 +56,23 @@ const Form: React.FC<FormProps> = ({ children, isRegister }) => {
     refetch();
   };
 
-  const onRegister = async () => {
-    console.log(1);
+  const onRegister: SubmitHandler<Inputs> = async (data) => {
+    await registerUser(data);
+    refetch();
   };
+
+  useEffect(() => {
+    if (registerIsSuccess) {
+      toast.success(registerUserData?.message);
+      navigate('/');
+    }
+
+    if (error) {
+      if ('data' in error) {
+        toast.error(error.data.message);
+      }
+    }
+  }, [registerIsError, registerIsSuccess]);
 
   useEffect(() => {
     if (isSuccess) {
@@ -51,9 +80,9 @@ const Form: React.FC<FormProps> = ({ children, isRegister }) => {
       navigate('/');
     }
 
-    if (error) {
-      if ('data' in error) {
-        toast.error(error.data.message);
+    if (registerError) {
+      if ('data' in registerError) {
+        toast.error(registerError.data.message);
       }
     }
   }, [isError, isSuccess]);
