@@ -48,3 +48,14 @@
     height: 38px;
   }
 }
+
+.login-register-link {
+  margin-top: 50px;
+  font-size: $fs-20;
+  font-weight: $fw-400;
+
+  a {
+    color: $color-orange;
+    text-decoration: underline;
+  }
+}

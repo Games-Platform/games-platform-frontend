@@ -1,0 +1,45 @@
+@import '@/assets/utils/_mixins.scss';
+@import '@/assets/utils/_variables.scss';
+
+.footer {
+  position: relative;
+  margin-top: 75px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+
+  &:before {
+    @include pseudo-element($color-grey, auto, 0, 0, 0, 0, 1px, 100%);
+  }
+}
+
+.footer-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.copyright {
+  margin-right: 5px;
+}
+
+.pavlo,
+.anton {
+  margin-right: 8px;
+  a {
+    display: flex;
+    align-items: center;
+
+    svg {
+      margin-left: 5px;
+    }
+  }
+}
+
+.pavlo {
+  padding-right: 8px;
+  position: relative;
+
+  &:after {
+    @include pseudo-element($color-grey, 0, auto, 5px, 0, 0, 15px, 2px);
+  }
+}
