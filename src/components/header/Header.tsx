@@ -1,9 +1,8 @@
-import Container from '../container/Container';
 import { NavLink } from 'react-router-dom';
+import Container from '../container/Container';
 import styles from '@/components/header/Header.module.scss';
 
 import NavList from '@/components/navList/NavList';
-import styles from '@/components/header/Header.module.scss';
 
 const Header = () => (
   <header className={styles.header}>

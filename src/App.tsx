@@ -5,23 +5,29 @@ import Layout from './pages/Layout';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
+import RequireAuth from '@/components/require-auth/RequireAuth';
+import Footer from './components/footer/Footer';
+import NotFound from './pages/NotFound';
 
 const App = () => (
   <>
     <Header />
     <Routes>
       <Route path="/" element={<Layout />}>
-        {/* public routed */}
+        {/* public routes */}
         <Route path="/" element={<Home />} />
         <Route path="login" element={<Login />} />
 
-        {/* private routed */}
-        <Route path="profile" element={<Profile />} />
+        {/* private routes */}
+        <Route element={<RequireAuth />}>
+          <Route path="profile" element={<Profile />} />
+        </Route>
 
-        {/* catch all */}
-        <Route path="*" element={<p>404</p>} />
+        {/* 404 */}
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
+    <Footer />
     <Toaster />
   </>
 );

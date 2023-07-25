@@ -5,7 +5,6 @@ import styles from './Input.module.scss';
 import EyeClosed from '@/components/icons/EyeClosed';
 import EyeOpened from '@/components/icons/EyeOpened';
 import { Inputs } from '@/types/Types';
-import ErrorMessage from '../error-message/ErrorMessage';
 
 interface InputProps {
   type: string;
@@ -62,9 +61,6 @@ const Input: FC<InputProps> = ({
           {passwordIcon}
         </div>
       )}
-      {/* <ErrorMessage>
-        {error[name as 'email' | 'username' | 'password']?.message}
-      </ErrorMessage> */}
     </div>
   );
 };

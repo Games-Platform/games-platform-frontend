@@ -7,6 +7,12 @@ body {
   color: $color-white;
 }
 
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .title {
   font-size: $fs-40;
   font-weight: $fw-800;

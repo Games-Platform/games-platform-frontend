@@ -3,8 +3,7 @@ import { NavLink } from 'react-router-dom';
 import NavItemComponent from '@/components/navItemComponent/NavItemComponent';
 import DropDown from '../dropdown/DropDown';
 import styles from '@/components/navList/NavList.module.scss';
-
-import styles from '@/components/navList/NavList.module.scss';
+import useAuth from '@/hooks/useAuth';
 
 const NavList = () => {
   const navItems = [
@@ -13,7 +12,7 @@ const NavList = () => {
     { name: 'Search', to: '/fdfd', svgIcon: true },
   ];
 
-  const isAuth = true;
+  const { isAuth } = useAuth();
 
   return (
     <nav className={styles.nav}>
@@ -28,7 +27,7 @@ const NavList = () => {
       {isAuth ? (
         <DropDown />
       ) : (
-        <NavLink to="/" className={styles.loginLink}>
+        <NavLink to="/login" className={styles.loginLink}>
           Log In
         </NavLink>
       )}

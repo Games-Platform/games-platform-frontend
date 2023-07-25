@@ -1,6 +1,6 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import toast from 'react-hot-toast';
 import Button from '../button/Button';
@@ -38,6 +38,7 @@ const Form: React.FC<FormProps> = ({ children, isRegister }) => {
 
   const onLogin: SubmitHandler<Inputs> = async (data) => {
     await loginUser(data);
+    refetch();
   };
 
   const onRegister = async () => {
@@ -47,7 +48,6 @@ const Form: React.FC<FormProps> = ({ children, isRegister }) => {
   useEffect(() => {
     if (isSuccess) {
       toast.success(loggedUserData?.message);
-      refetch();
       navigate('/');
     }
 
@@ -109,6 +109,17 @@ const Form: React.FC<FormProps> = ({ children, isRegister }) => {
         <Google />
         <span>Continue with Google</span>
       </a>
+
+      {isRegister ? (
+        <div className={styles['login-register-link']}>
+          {' '}
+          Already have an account? <Link to="/login">Log in!</Link>
+        </div>
+      ) : (
+        <div className={styles['login-register-link']}>
+          Don’t have an account yet? <Link to="/register">Register!</Link>
+        </div>
+      )}
     </form>
   );
 };
