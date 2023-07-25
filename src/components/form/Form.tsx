@@ -62,8 +62,8 @@ const Form: React.FC<FormProps> = ({ children, isRegister }) => {
   };
 
   useEffect(() => {
-    if (registerIsSuccess) {
-      toast.success(registerUserData?.message);
+    if (isSuccess) {
+      toast.success(loggedUserData?.message);
       navigate('/');
     }
 
@@ -72,11 +72,11 @@ const Form: React.FC<FormProps> = ({ children, isRegister }) => {
         toast.error(error.data.message);
       }
     }
-  }, [registerIsError, registerIsSuccess]);
+  }, [isError, isSuccess]);
 
   useEffect(() => {
-    if (isSuccess) {
-      toast.success(loggedUserData?.message);
+    if (registerIsSuccess) {
+      toast.success(registerUserData?.message);
       navigate('/');
     }
 
@@ -85,7 +85,7 @@ const Form: React.FC<FormProps> = ({ children, isRegister }) => {
         toast.error(registerError.data.message);
       }
     }
-  }, [isError, isSuccess]);
+  }, [registerIsError, registerIsSuccess]);
   return (
     <form
       onSubmit={handleSubmit(isRegister ? onRegister : onLogin)}
