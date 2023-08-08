@@ -15,6 +15,7 @@
   $right: auto,
   $left: 0,
   $top: 50%,
+  $bottom: auto,
   $transformY: 50%,
   $transformX: 0,
   $height: 1px,
@@ -25,6 +26,7 @@
   left: $left;
   right: $right;
   top: $top;
+  bottom: $bottom;
   transform: translate($transformX, $transformY);
   height: $height;
   width: $width;

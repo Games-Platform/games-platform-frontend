@@ -49,3 +49,38 @@ export interface IError {
     statusCode: number;
   };
 }
+
+export interface IGame {
+  id: number;
+  added: number;
+  background_image: string;
+  metacritic: number;
+  name: string;
+  platforms: {
+    id: number;
+    name: string;
+    slug: string;
+  }[];
+  stores: {
+    store: {
+      id: number;
+      name: string;
+      slug: string;
+    };
+  }[];
+  rating: number;
+  released: string;
+  short_screenshots: { id: number; image: string }[];
+  slug: string;
+}
+
+export interface IGames {
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: IGame[];
+}
+
+export interface ISearchParams {
+  query: string | null;
+}

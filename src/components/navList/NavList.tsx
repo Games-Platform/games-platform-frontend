@@ -6,7 +6,8 @@ import NavItemComponent from '@/components/navItemComponent/NavItemComponent';
 import DropDown from '../dropdown/DropDown';
 import styles from '@/components/navList/NavList.module.scss';
 import useAuth from '@/hooks/useAuth';
-import Search from '../icons/Search';
+import SearchIcon from '../icons/SearchIcon';
+import Search from '../search/Search';
 
 const NavList = () => {
   const navItems = [
@@ -61,24 +62,11 @@ const NavList = () => {
         >
           Search
           <div className={styles.svgIcon}>
-            <Search />
+            <SearchIcon />
           </div>
         </li>
 
-        <li
-          className={classNames(styles.searchInputWrapper, {
-            [styles.active]: isSearchOpen,
-          })}
-        >
-          <input
-            ref={searchInputRef}
-            type="text"
-            placeholder="Start type to explore..."
-          />
-          <div className={styles.inputSearchIcon}>
-            <Search />
-          </div>
-        </li>
+        <Search isSearchOpen={isSearchOpen} searchInputRef={searchInputRef} />
       </ul>
 
       {isAuth ? (

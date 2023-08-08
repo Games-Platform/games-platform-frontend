@@ -11,7 +11,7 @@
   position: relative;
 
   &:after {
-    @include pseudo-element($color-grey, auto, 0, 100%, 0, 0, 1px, 100%);
+    @include pseudo-element($color-grey, auto, 0, 100%, 0, auto, 0, 1px, 100%);
   }
 }
 
