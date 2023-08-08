@@ -9,7 +9,7 @@ const TopRatedSection = () => (
     <Container>
       <div className={styles.topRatedWrapper}>
         <div className={styles.topRatedInfo}>
-          <h4 className={styles.topRatedTitle}>Top rated games</h4>
+          <h3 className={styles.topRatedTitle}>Top rated games</h3>
           <NavLink className={styles.topRatedLink} to="/popular">
             SEE ALL
           </NavLink>

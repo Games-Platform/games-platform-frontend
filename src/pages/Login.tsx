@@ -1,6 +1,6 @@
 import Container from '@/components/container/Container';
 
-import Form from '../components/form/Form';
+import Form from '@/components/form/Form';
 
 import '@/assets/styles/_global.scss';
 
