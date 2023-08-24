@@ -13,8 +13,12 @@ const DropDown = () => {
 
   const [logout, { isError, isSuccess }] = useLogoutMutation();
 
-  const handleDropdownClick = () => {
-    setDropdownState(!dropdownState);
+  const handleShowDropdown = () => {
+    setDropdownState(true);
+  };
+
+  const handleHideDropdown = () => {
+    setDropdownState(false);
   };
 
   const navItems = [
@@ -42,11 +46,11 @@ const DropDown = () => {
 
   return (
     <div className="container">
-      <div className="dropdown">
+      <div className="dropdown" onMouseLeave={handleHideDropdown}>
         <div
-          onClick={handleDropdownClick}
           className={styles['dropdown-list']}
           aria-hidden="true"
+          onMouseEnter={handleShowDropdown}
         >
           <Avatar />
         </div>
@@ -56,7 +60,7 @@ const DropDown = () => {
             dropdownState ? `${styles.isVisible}` : `${styles.isHidden}`
           }`}
           aria-hidden="true"
-          onClick={handleDropdownClick}
+          onMouseLeave={handleHideDropdown}
         >
           {navItems.map(({ name, to }) => (
             <div className={styles['dropdown-item']} key={name}>

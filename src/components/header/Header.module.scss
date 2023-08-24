@@ -7,7 +7,7 @@
 
 .wrapper {
   @include flex-center;
-  justify-content: space-between;
+  justify-content: inherit;
   min-height: 60px;
 }
 
@@ -16,6 +16,31 @@
   font-weight: $fw-800;
 }
 
-.headerRight {
+.navBlock {
+  position: relative;
   @include flex-center;
+  margin-left: auto;
+}
+
+.loginLink {
+  @include flex-center;
+  height: 35px;
+  width: 129px;
+  background-color: $color-orange-1;
+  font-weight: $fw-600;
+  border: none;
+  border-radius: 5px;
+}
+
+.navLink {
+  @include flex-center;
+  height: 50px;
+  margin-right: 42px;
+  cursor: pointer;
+  @include hover(text-shadow, $shadow-white);
+}
+
+.svgIcon {
+  margin-left: 6px;
+  z-index: 2;
 }

@@ -3,7 +3,9 @@
 
 .link {
   @include flex-center;
-  border: none;
+  height: 40px;
+  font-weight: $fw-400;
+  border: 0;
   border-radius: 5px;
 }
 
@@ -16,9 +18,11 @@
 }
 
 .orange {
-  background-color: $color-orange;
+  background-color: $color-orange-1;
+  @include hover(background-color, $color-orange-2);
 }
 
 .white {
   background: $color-rare-white;
+  @include hover(background-color, $color-grey);
 }

@@ -26,13 +26,6 @@
 }
 
 .random-btn {
-  font-weight: $fw-400;
-  font-size: $fs-13;
-  background-color: $color-orange;
-  border-radius: 5px;
-  display: block;
-  max-width: 220px;
-  text-align: center;
+  max-width: max-content;
   margin: 70px auto 0 auto;
-  padding: 10px 0;
 }

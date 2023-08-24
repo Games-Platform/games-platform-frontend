@@ -15,8 +15,15 @@
   }
 }
 
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 530px;
+}
+
 .miniTitle {
-  color: $color-orange;
+  color: $color-orange-1;
   font-size: $fs-20;
   font-weight: $fw-700;
 }
@@ -38,12 +45,5 @@
 }
 
 .loginLink {
-  @include flex-center;
   margin-top: 65px;
-  width: 223px;
-  background-color: $color-orange;
-  font-weight: $fw-400;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 0;
 }

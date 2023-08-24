@@ -9,6 +9,7 @@
   z-index: -1;
 
   input {
+    position: relative;
     font-family: $ff-poppins;
     border-radius: 9px;
     color: $color-white;
@@ -21,6 +22,7 @@
     opacity: 0;
     width: 440px;
     height: 0;
+    z-index: 2;
 
     &::placeholder {
       color: $color-rare-grey;
@@ -44,6 +46,7 @@
 
 .searchInputWrapper.active {
   z-index: 1;
+
   input {
     opacity: 1;
 
@@ -71,8 +74,7 @@
   padding-bottom: 19px;
 
   &::after {
-    @include pseudo-element(
-      $color-rare-white,
+    @include pseudo-element($color-rare-white,
       0,
       auto,
       auto,
@@ -80,13 +82,13 @@
       0,
       0,
       1px,
-      100%
-    );
+      100%);
   }
 }
 
 .searched-game-image {
   margin-right: 35px;
+
   img {
     width: 70px;
     height: 80px;
@@ -103,8 +105,9 @@
 .searched-game-rating {
   font-size: $fs-10;
   font-weight: $fw-700;
-  color: $color-orange;
+  color: $color-orange-1;
   margin-top: 13px;
+
   span {
     color: $color-white;
     margin-right: 4px;

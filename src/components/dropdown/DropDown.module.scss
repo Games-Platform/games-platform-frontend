@@ -2,6 +2,9 @@
 @import '@/assets/utils/_Mixins';
 
 .dropdown-list {
+  @include flex-center;
+  padding-bottom: 3px;
+  width: 110px;
   font-size: 16px;
   background: $color-black-1;
   cursor: pointer;
@@ -12,8 +15,6 @@
   display: flex;
   flex-direction: column;
   width: 110px;
-  margin-top: 5px;
-  margin-left: -27.25px;
   padding: 8px 15px;
   background: $color-black-2;
   border-radius: 4px;
@@ -38,6 +39,10 @@
   &:last-child {
     padding-top: 8px;
   }
+}
+
+.dropdown-link {
+  @include hover(text-shadow, $shadow-white);
 }
 
 .isVisible {
