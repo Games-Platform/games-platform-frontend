@@ -32,3 +32,11 @@
   width: $width;
   background-color: $bgColor;
 }
+
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} $transition-time;
+
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}

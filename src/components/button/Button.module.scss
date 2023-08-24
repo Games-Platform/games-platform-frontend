@@ -1,4 +1,5 @@
 @import '@/assets/utils/_Variables';
+@import '@/assets/utils/_Mixins';
 
 .button {
   font-weight: $fw-700;
@@ -21,9 +22,11 @@
 }
 
 .orange {
-  background-color: $color-orange;
+  background-color: $color-orange-1;
+  @include hover(background-color, $color-orange-2);
 }
 
 .white {
   background-color: $color-white;
+  @include hover(background-color, $color-grey);
 }

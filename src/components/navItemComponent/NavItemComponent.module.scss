@@ -9,6 +9,7 @@
 .navLink {
   @include flex-center;
   height: 50px;
+  @include hover(text-shadow, $shadow-white);
 }
 
 .svgIcon {
@@ -27,7 +28,7 @@
     height: 4px;
     margin-left: -5px;
     border-radius: 10px;
-    background-color: $color-orange;
+    background-color: $color-orange-1;
   }
 
   &::before {

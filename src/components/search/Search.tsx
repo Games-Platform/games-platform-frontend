@@ -42,6 +42,12 @@ const Search: FC<SearchProps> = ({
     }
   };
 
+  useEffect(() => {
+    if (!isSearchOpen) {
+      setQuery('');
+    }
+  }, [isSearchOpen]);
+
   const setPlatforms = (platform: string) => {
     switch (platform) {
       case 'steam':
@@ -58,8 +64,9 @@ const Search: FC<SearchProps> = ({
         return null;
     }
   };
+
   return (
-    <li
+    <div
       className={classNames(styles.searchInputWrapper, {
         [styles.active]: isSearchOpen,
       })}
@@ -72,9 +79,11 @@ const Search: FC<SearchProps> = ({
         value={query}
         placeholder="Start type to explore..."
       />
+
       <div className={styles.inputSearchIcon}>
         <SearchIcon />
       </div>
+
       <div className={styles['searched-games']}>
         {data &&
           isSearchOpen &&
@@ -84,14 +93,21 @@ const Search: FC<SearchProps> = ({
               className={styles['searched-game']}
             >
               <div className={styles['searched-game-image']}>
-                <img src={game.background_image} alt={game.name} />
+                <img
+                  src={game.background_image}
+                  alt={game.name}
+                  loading="lazy"
+                />
               </div>
+
               <div className={styles['searched-game-info']}>
                 <h5 className={styles['searched-game-title']}>{game.name}</h5>
+
                 <p className={styles['searched-game-rating']}>
                   <span>rating:</span>
                   {game.rating}
                 </p>
+
                 <div className={styles['searched-game-platforms']}>
                   {game.stores &&
                     game.stores.map((platform) =>
@@ -102,7 +118,7 @@ const Search: FC<SearchProps> = ({
             </NavLink>
           ))}
       </div>
-    </li>
+    </div>
   );
 };
 export default Search;
