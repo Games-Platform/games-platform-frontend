@@ -66,7 +66,11 @@ const NavList = () => {
           </div>
         </li>
 
-        <Search isSearchOpen={isSearchOpen} searchInputRef={searchInputRef} />
+        <Search
+          isSearchOpen={isSearchOpen}
+          searchInputRef={searchInputRef}
+          setIsSearchOpen={setIsSearchOpen}
+        />
       </ul>
 
       {isAuth ? (

@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 
-import { FC, Ref, useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { FC, Ref, useDeferredValue, useEffect, useState } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 import styles from './Search.module.scss';
 import SearchIcon from '@/components/icons/SearchIcon';
 import { useGetSearchedQuery } from '@/store/services/search';
@@ -14,19 +14,32 @@ import Gog from '../icons/Gog';
 interface SearchProps {
   isSearchOpen: boolean;
   searchInputRef: Ref<HTMLInputElement>;
+  setIsSearchOpen: (value: boolean) => void;
 }
 
-const Search: FC<SearchProps> = ({ isSearchOpen, searchInputRef }) => {
+const Search: FC<SearchProps> = ({
+  isSearchOpen,
+  searchInputRef,
+  setIsSearchOpen,
+}) => {
   const [query, setQuery] = useState<string>('');
+  const deferredQuery = useDeferredValue(query);
 
-  const { data, refetch, isLoading, isSuccess } = useGetSearchedQuery({
-    query,
+  const navigate = useNavigate();
+
+  const { data, isLoading, isSuccess } = useGetSearchedQuery({
+    query: deferredQuery,
   });
-
-  console.log(data);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
+  };
+
+  const handleNavigate = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      setIsSearchOpen(false);
+      navigate('/search');
+    }
   };
 
   const setPlatforms = (platform: string) => {
@@ -54,6 +67,7 @@ const Search: FC<SearchProps> = ({ isSearchOpen, searchInputRef }) => {
       <input
         ref={searchInputRef}
         onChange={handleSearch}
+        onKeyDown={handleNavigate}
         type="text"
         value={query}
         placeholder="Start type to explore..."
