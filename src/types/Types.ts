@@ -1,3 +1,5 @@
+import { SingleValue, ActionMeta } from 'react-select';
+
 export const enum EnumSizes {
   SMALL = 'small',
   MEDIUM = 'medium',
@@ -8,6 +10,7 @@ export const enum EnumSizes {
 export const enum EnumColors {
   ORANGE = 'orange',
   WHITE = 'white',
+  BLACK = 'black',
 }
 
 export type TButtonSizes =
@@ -83,4 +86,19 @@ export interface IGames {
 
 export interface ISearchParams {
   query: string | null;
+}
+
+export interface ISelectField {
+  value: string;
+  label: string;
+}
+
+export type TSelectOnChange = (
+  newValue: SingleValue<ISelectField>,
+  actionMeta: ActionMeta<ISelectField>,
+) => void;
+
+export const enum ECustomInputWidth {
+  SMALL = '175px',
+  MEDIUM = '240px',
 }

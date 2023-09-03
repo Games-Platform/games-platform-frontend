@@ -1,0 +1,45 @@
+@import '@/assets/utils/_variables.scss';
+@import '@/assets/utils/_Mixins.scss';
+
+.card {
+  margin-top: 30px;
+  width: 230px;
+  background-color: $color-black-2;
+  border-radius: 0 0 10px 10px;
+}
+
+.cardImgWrapper {
+  height: 125px;
+}
+
+.image {
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+
+.cardContent {
+  padding: 15px;
+}
+
+.cardTitle {
+  margin-bottom: 10px;
+  font-size: $fs-16;
+}
+
+.platforms {
+  @include flex-between;
+  margin-bottom: 25px;
+  font-size: $fs-14;
+}
+
+.platformsList {
+  display: flex;
+  gap: 12px;
+}
+
+.rating {
+  @include flex-center;
+  justify-content: start;
+  gap: 10px;
+  color: $color-orange-1;
+}

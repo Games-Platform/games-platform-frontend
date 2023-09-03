@@ -10,16 +10,22 @@ import Footer from './components/footer/Footer';
 import NotFound from './pages/NotFound';
 import Register from './pages/Register';
 import ScrollToTop from './components/scrollToTop/ScrollToTop';
+import PopularGames from './pages/PopularGames';
 
 const App = () => (
   <>
     <Header />
+
     <Routes>
       <Route path="/" element={<Layout />}>
         {/* public routes */}
         <Route path="/" element={<Home />} />
+
         <Route path="login" element={<Login />} />
+
         <Route path="register" element={<Register />} />
+
+        <Route path="most-popular-games" element={<PopularGames />} />
 
         {/* private routes */}
         <Route element={<RequireAuth />}>
@@ -30,8 +36,11 @@ const App = () => (
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
+
     <Footer />
+
     <Toaster />
+
     <ScrollToTop />
   </>
 );
