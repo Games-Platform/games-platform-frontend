@@ -1,5 +1,6 @@
 import { useLocation, Navigate, Outlet } from 'react-router';
 import { useMemo } from 'react';
+import Spinner from '../spinner/Spinner';
 import useAuth from '@/hooks/useAuth';
 
 const RequireAuth = () => {
@@ -17,6 +18,6 @@ const RequireAuth = () => {
     [isAuth],
   );
 
-  return isLoading ? <p>loading</p> : protectedRoute;
+  return isLoading ? <Spinner /> : protectedRoute;
 };
 export default RequireAuth;

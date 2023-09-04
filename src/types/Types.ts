@@ -75,6 +75,14 @@ export interface IGame {
   slug: string;
 }
 
+export interface ILocalGame {
+  game_id: string;
+  background_image: string;
+  metacritic: number;
+  name: string;
+  games_platform_rating: number;
+}
+
 export interface IGames {
   count: number;
   next: string | null;

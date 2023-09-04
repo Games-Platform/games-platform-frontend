@@ -18,7 +18,7 @@ const CustomSelect: FC<CustomSelectProps> = ({
       provided: CSSObjectWithLabel,
       { data }: { data: ISelectOption },
     ) => {
-      if (data.value === options[options.length - 1].value) {
+      if (data.value === options.at(-1)?.value) {
         return {
           ...provided,
           color: '#9f0000 !important',

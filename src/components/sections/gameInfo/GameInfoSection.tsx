@@ -7,9 +7,9 @@ import getSelectOptions from '@/helpers/getSelectOptions';
 import { EnumColors, EnumSizes, IGame, ISelectOption } from '@/types/Types';
 
 import styles from './GameInfoSection.module.scss';
-import StarRating from '../../starRating/StarRating';
+import StarRating from '@/components/starRating/StarRating';
 import Button from '@/components/button/Button';
-import LinkComponent from '../../linkComponent/LinkComponent';
+import LinkComponent from '@/components/linkComponent/LinkComponent';
 
 interface GameInfoSectionProps {
   game: IGame | undefined;
@@ -22,14 +22,14 @@ const GameInfoSection: FC<GameInfoSectionProps> = ({ game, isLoading }) => {
     SingleValue<ISelectOption>
   >(options[0]);
 
-  const [isRatingOpen, setIsRatingOpen] = useState<any>(false);
+  const [isRatingOpen, setIsRatingOpen] = useState(false);
 
   const handleSelectChange = (newValue: SingleValue<ISelectOption>) => {
     setSelectedOption(newValue);
   };
 
   const handleChangeRatingOpen = useCallback(() => {
-    setIsRatingOpen((prev: boolean) => !prev);
+    setIsRatingOpen((prev) => !prev);
   }, []);
 
   return (
@@ -51,23 +51,25 @@ const GameInfoSection: FC<GameInfoSectionProps> = ({ game, isLoading }) => {
               </React.Fragment>
             ))}
         </div>
-        <div className={styles['game-buttons']}>
-          <Button
-            type="button"
-            size={EnumSizes.MEDIUM}
-            onClick={handleChangeRatingOpen}
-          >
-            Rate this game
-          </Button>
-          <LinkComponent
-            to="#comments"
-            color={EnumColors.WHITE}
-            sizes={EnumSizes.MEDIUM}
-          >
-            Leave comment
-          </LinkComponent>
-        </div>
-        {isRatingOpen && <StarRating onClose={handleChangeRatingOpen} />}
+        <>
+          <div className={styles['game-buttons']}>
+            <Button
+              type="button"
+              size={EnumSizes.MEDIUM}
+              onClick={handleChangeRatingOpen}
+            >
+              Rate this game
+            </Button>
+            <LinkComponent
+              to="#comments"
+              color={EnumColors.WHITE}
+              sizes={EnumSizes.MEDIUM}
+            >
+              Leave comment
+            </LinkComponent>
+          </div>
+          {isRatingOpen && <StarRating onClose={handleChangeRatingOpen} />}
+        </>
         <p className={styles['game-description']}>{game?.description_raw}</p>
         <div className={styles['game-ratings']}>
           <div className={styles['game-rating']}>
