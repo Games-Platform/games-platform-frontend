@@ -1,0 +1,64 @@
+@import '@/assets/utils/_mixins.scss';
+@import '@/assets/utils/_variables.scss';
+
+.top-wrapper {
+  margin-top: 44px;
+  @include flex-between;
+}
+
+.game-name {
+  font-size: $fs-40;
+  font-weight: $fw-700;
+}
+
+.game-platforms {
+  margin-top: 44px;
+  svg {
+    width: 40px;
+    height: 40px;
+
+    &:not(:last-child) {
+      margin-right: 32px;
+    }
+  }
+}
+
+.game-buttons {
+  margin-top: 44px;
+  display: flex;
+
+  button {
+    margin-right: 20px;
+  }
+}
+
+.game-description {
+  font-size: $fs-15;
+  margin-top: 44px;
+}
+
+.game-ratings {
+  margin-top: 70px;
+  display: flex;
+}
+
+.game-rating {
+  font-size: $fs-24;
+  font-weight: $fw-500;
+
+  &:not(:last-child) {
+    margin-right: 37px;
+    padding-right: 37px;
+    position: relative;
+
+    &:after {
+      @include pseudo-element($color-white, 0, auto, 0, auto, 0, 0, 30px, 1px);
+    }
+  }
+}
+
+.game-value {
+  margin-left: 14px;
+  color: $color-orange-1;
+  font-weight: $fw-700;
+}

@@ -1,67 +1,83 @@
-import { FC, useState } from 'react';
-import Select, { CSSObjectWithLabel, SingleValue } from 'react-select';
-import { IGame } from '@/types/Types';
+import React, { FC, useCallback, useState } from 'react';
+import { SingleValue } from 'react-select';
 import Container from '@/components/container/Container';
+import CustomSelect from '@/components/select/CustomSelect';
+import setPlatforms from '@/helpers/setPlatform';
+import getSelectOptions from '@/helpers/getSelectOptions';
+import { EnumColors, EnumSizes, IGame, ISelectOption } from '@/types/Types';
 
 import styles from './GameInfoSection.module.scss';
+import StarRating from '../../starRating/StarRating';
+import Button from '@/components/button/Button';
+import LinkComponent from '../../linkComponent/LinkComponent';
 
 interface GameInfoSectionProps {
   game: IGame | undefined;
   isLoading: boolean;
 }
 
-const options = [
-  { value: 'add', label: 'Add game to your account' },
-  { value: 'finished', label: 'Finished!' },
-  { value: 'playing', label: 'Playing now!' },
-  { value: 'later', label: 'Want to play later!' },
-  { value: 'remove', label: 'Remove from account' },
-];
-
 const GameInfoSection: FC<GameInfoSectionProps> = ({ game, isLoading }) => {
+  const options = getSelectOptions();
   const [selectedOption, setSelectedOption] = useState<
-    SingleValue<{ value: string; label: string }>
+    SingleValue<ISelectOption>
   >(options[0]);
 
-  const handleSelectChange = (
-    newValue: SingleValue<{ value: string; label: string }>,
-  ) => {
+  const [isRatingOpen, setIsRatingOpen] = useState<any>(false);
+
+  const handleSelectChange = (newValue: SingleValue<ISelectOption>) => {
     setSelectedOption(newValue);
   };
 
-  const customStyles = {
-    option: (
-      provided: CSSObjectWithLabel,
-      { data }: { data: { value: string; label: string } },
-    ) => {
-      if (data.value === options[options.length - 1].value) {
-        return {
-          ...provided,
-          color: '#9f0000 !important',
-          cursor: 'pointer',
-        };
-      }
-
-      return { ...provided, cursor: 'pointer' };
-    },
-    control: (provided: CSSObjectWithLabel) => ({
-      ...provided,
-      cursor: 'pointer',
-    }),
-  };
+  const handleChangeRatingOpen = useCallback(() => {
+    setIsRatingOpen((prev: boolean) => !prev);
+  }, []);
 
   return (
     <section className={styles['game-info']}>
       <Container>
         <div className={styles['top-wrapper']}>
           <h3 className={styles['game-name']}>{game?.name}</h3>
-          <Select
-            classNamePrefix="select"
-            onChange={handleSelectChange}
+          <CustomSelect
+            handleSelectChange={handleSelectChange}
             options={options}
-            defaultValue={selectedOption}
-            styles={customStyles}
+            selectedOption={selectedOption}
           />
+        </div>
+        <div className={styles['game-platforms']}>
+          {game?.stores &&
+            game?.stores.map((platform) => (
+              <React.Fragment key={platform.store.slug}>
+                {setPlatforms(platform.store.slug)}
+              </React.Fragment>
+            ))}
+        </div>
+        <div className={styles['game-buttons']}>
+          <Button
+            type="button"
+            size={EnumSizes.MEDIUM}
+            onClick={handleChangeRatingOpen}
+          >
+            Rate this game
+          </Button>
+          <LinkComponent
+            to="#comments"
+            color={EnumColors.WHITE}
+            sizes={EnumSizes.MEDIUM}
+          >
+            Leave comment
+          </LinkComponent>
+        </div>
+        {isRatingOpen && <StarRating onClose={handleChangeRatingOpen} />}
+        <p className={styles['game-description']}>{game?.description_raw}</p>
+        <div className={styles['game-ratings']}>
+          <div className={styles['game-rating']}>
+            Metacritic:
+            <span className={styles['game-value']}>{game?.metacritic}</span>
+          </div>
+          <div className={styles['game-rating']}>
+            Games platform:
+            <span className={styles['game-value']}>0</span>
+          </div>
         </div>
       </Container>
     </section>

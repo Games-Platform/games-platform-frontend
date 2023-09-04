@@ -54,6 +54,7 @@ export interface IGame {
   id: number;
   added: number;
   background_image: string;
+  description_raw: string;
   metacritic: number;
   name: string;
   platforms: {
@@ -87,4 +88,9 @@ export interface ISearchParams {
 
 export interface IGetSingleGame {
   id?: string;
+}
+
+export interface ISelectOption {
+  value: string;
+  label: string;
 }

@@ -1,0 +1,24 @@
+@import '@/assets/utils/_mixins.scss';
+
+.star-rating {
+  max-width: 233px;
+  margin-top: 14px;
+  @include flex-center;
+}
+
+.rating-btn {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
+}
+.on svg {
+  fill: yellow;
+}
+.off svg {
+  color: none;
+}

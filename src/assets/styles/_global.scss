@@ -46,6 +46,22 @@ main {
 }
 
 .select {
+  &__control {
+    border-color: $color-coal-light !important;
+    min-width: 280px;
+  }
+
+  &__indicator {
+    svg {
+      fill: $color-coal-light !important;
+      stroke: $color-coal-light !important;
+    }
+  }
+
+  &__indicator-separator {
+    display: none !important;
+  }
+
   &__control,
   &__menu,
   &__option {

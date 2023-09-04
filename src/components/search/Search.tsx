@@ -1,6 +1,13 @@
 import classNames from 'classnames';
 
-import { FC, Ref, useDeferredValue, useEffect, useState } from 'react';
+import {
+  FC,
+  Fragment,
+  Ref,
+  useDeferredValue,
+  useEffect,
+  useState,
+} from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import styles from './Search.module.scss';
 import SearchIcon from '@/components/icons/SearchIcon';
@@ -71,6 +78,7 @@ const Search: FC<SearchProps> = ({
             <NavLink
               to={`/game/${game.id}`}
               className={styles['searched-game']}
+              key={game.id}
             >
               <div className={styles['searched-game-image']}>
                 <img
@@ -90,9 +98,11 @@ const Search: FC<SearchProps> = ({
 
                 <div className={styles['searched-game-platforms']}>
                   {game.stores &&
-                    game.stores.map((platform) =>
-                      setPlatforms(platform.store.slug),
-                    )}
+                    game.stores.map((platform) => (
+                      <Fragment key={platform.store.slug}>
+                        {setPlatforms(platform.store.slug)}
+                      </Fragment>
+                    ))}
                 </div>
               </div>
             </NavLink>
