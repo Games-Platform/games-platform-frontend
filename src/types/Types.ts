@@ -84,3 +84,7 @@ export interface IGames {
 export interface ISearchParams {
   query: string | null;
 }
+
+export interface IGetSingleGame {
+  id?: string;
+}

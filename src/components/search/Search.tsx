@@ -5,11 +5,8 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import styles from './Search.module.scss';
 import SearchIcon from '@/components/icons/SearchIcon';
 import { useGetSearchedQuery } from '@/store/services/search';
-import Steam from '../icons/Steam';
-import PS from '../icons/PS';
-import Xbox from '../icons/Xbox';
-import EpicGames from '../icons/EpicGames';
-import Gog from '../icons/Gog';
+
+import setPlatforms from '@/helpers/setPlatform';
 
 interface SearchProps {
   isSearchOpen: boolean;
@@ -47,23 +44,6 @@ const Search: FC<SearchProps> = ({
       setQuery('');
     }
   }, [isSearchOpen]);
-
-  const setPlatforms = (platform: string) => {
-    switch (platform) {
-      case 'steam':
-        return <Steam />;
-      case 'playstation-store':
-        return <PS />;
-      case 'xbox-store':
-        return <Xbox />;
-      case 'epic-games':
-        return <EpicGames />;
-      case 'gog':
-        return <Gog />;
-      default:
-        return null;
-    }
-  };
 
   return (
     <div

@@ -10,6 +10,7 @@ import Footer from './components/footer/Footer';
 import NotFound from './pages/NotFound';
 import Register from './pages/Register';
 import ScrollToTop from './components/scrollToTop/ScrollToTop';
+import SingleGame from '@/pages/SingleGame';
 
 const App = () => (
   <>
@@ -20,6 +21,7 @@ const App = () => (
         <Route path="/" element={<Home />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
+        <Route path="game/:id" element={<SingleGame />} />
 
         {/* private routes */}
         <Route element={<RequireAuth />}>
