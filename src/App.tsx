@@ -1,16 +1,18 @@
 import { Route, Routes } from 'react-router';
 import { Toaster } from 'react-hot-toast';
+import { lazy } from 'react';
 import Header from '@/components/header/Header';
 import Layout from './pages/Layout';
-import Home from './pages/Home';
-import Login from './pages/Login';
-import Profile from './pages/Profile';
-import RequireAuth from '@/components/requireAuth/RequireAuth';
 import Footer from './components/footer/Footer';
-import NotFound from './pages/NotFound';
-import Register from './pages/Register';
-import ScrollToTop from './components/scrollToTop/ScrollToTop';
-import SingleGame from '@/pages/SingleGame';
+
+const Home = lazy(() => import('@/pages/Home'));
+const Login = lazy(() => import('@/pages/Login'));
+const Profile = lazy(() => import('@/pages/Profile'));
+const RequireAuth = lazy(() => import('@/components/requireAuth/RequireAuth'));
+const NotFound = lazy(() => import('@/pages/NotFound'));
+const Register = lazy(() => import('@/pages/Register'));
+const ScrollToTop = lazy(() => import('@/components/scrollToTop/ScrollToTop'));
+const SingleGame = lazy(() => import('@/pages/SingleGame'));
 
 const App = () => (
   <>
