@@ -8,6 +8,7 @@ const Login = () => (
   <main>
     <Container>
       <h2 className="title login-title">Log in</h2>
+
       <Form isRegister={false}>Log In</Form>
     </Container>
   </main>
