@@ -10,8 +10,7 @@
   justify-content: space-between;
 }
 
-@mixin pseudo-element(
-  $bgColor,
+@mixin pseudo-element($bgColor,
   $right: auto,
   $left: 0,
   $top: 50%,
@@ -19,8 +18,7 @@
   $transformY: 50%,
   $transformX: 0,
   $height: 1px,
-  $width: 24px
-) {
+  $width: 24px) {
   content: '';
   position: absolute;
   left: $left;
