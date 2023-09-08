@@ -8,6 +8,8 @@ import Search from '@/components/search/Search';
 import useAuth from '@/hooks/useAuth';
 import DropDown from '@/components/dropdown/DropDown';
 import styles from '@/components/header/Header.module.scss';
+import LinkComponent from '../linkComponent/LinkComponent';
+import { EnumColors, EnumSizes } from '@/types/Types';
 
 const Header = () => {
   const { isAuth } = useAuth();
@@ -73,9 +75,13 @@ const Header = () => {
           {isAuth ? (
             <DropDown />
           ) : (
-            <NavLink to="/login" className={styles.loginLink}>
+            <LinkComponent
+              to="/login"
+              color={EnumColors.ORANGE}
+              sizes={EnumSizes.SMALL}
+            >
               Log In
-            </NavLink>
+            </LinkComponent>
           )}
         </div>
       </Container>

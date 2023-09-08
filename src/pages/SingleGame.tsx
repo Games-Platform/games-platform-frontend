@@ -3,7 +3,7 @@ import { useParams } from 'react-router';
 import { useGetSingleGameQuery } from '@/store/services/search';
 import GameCoverSection from '@/components/sections/gameCover/GameCoverSection';
 import GameInfoSection from '@/components/sections/gameInfo/GameInfoSection';
-import { useCreateGameMutation } from '../store/services/games';
+import { useCreateGameMutation } from '@/store/services/games';
 
 const SingleGame = () => {
   const { id } = useParams();

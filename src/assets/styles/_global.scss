@@ -45,41 +45,6 @@ main {
   background: #555;
 }
 
-.select {
-  &__control {
-    border-color: $color-coal-light !important;
-    min-width: 280px;
-  }
-
-  &__indicator {
-    svg {
-      fill: $color-coal-light !important;
-      stroke: $color-coal-light !important;
-    }
-  }
-
-  &__indicator-separator {
-    display: none !important;
-  }
-
-  &__control,
-  &__menu,
-  &__option {
-    background-color: $color-black-2 !important;
-  }
-
-  &__single-value,
-  &__option {
-    color: $color-coal-light !important;
-  }
-
-  &__option {
-    &--is-focused {
-      background-color: $color-rare-white !important;
-    }
-  }
-}
-
 .spinner-wrapper {
   width: 100vw;
   height: 100vh;

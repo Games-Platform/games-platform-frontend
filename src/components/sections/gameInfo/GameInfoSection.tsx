@@ -1,15 +1,21 @@
 import React, { FC, useCallback, useState } from 'react';
 import { SingleValue } from 'react-select';
 import Container from '@/components/container/Container';
-import CustomSelect from '@/components/select/CustomSelect';
+import CustomSelect from '@/components/customSelect/CustomSelect';
 import setPlatforms from '@/helpers/setPlatform';
-import getSelectOptions from '@/helpers/getSelectOptions';
-import { EnumColors, EnumSizes, IGame, ISelectOption } from '@/types/Types';
+import {
+  ECustomInputWidth,
+  EnumColors,
+  EnumSizes,
+  IGame,
+  ISelectField,
+} from '@/types/Types';
 
 import styles from './GameInfoSection.module.scss';
 import StarRating from '@/components/starRating/StarRating';
 import Button from '@/components/button/Button';
 import LinkComponent from '@/components/linkComponent/LinkComponent';
+import { singleGameOptions } from '@/utils/GlobalVars';
 
 interface GameInfoSectionProps {
   game: IGame | undefined;
@@ -17,14 +23,13 @@ interface GameInfoSectionProps {
 }
 
 const GameInfoSection: FC<GameInfoSectionProps> = ({ game, isLoading }) => {
-  const options = getSelectOptions();
   const [selectedOption, setSelectedOption] = useState<
-    SingleValue<ISelectOption>
-  >(options[0]);
+    SingleValue<ISelectField>
+  >(singleGameOptions[0]);
 
   const [isRatingOpen, setIsRatingOpen] = useState(false);
 
-  const handleSelectChange = (newValue: SingleValue<ISelectOption>) => {
+  const handleSelectChange = (newValue: SingleValue<ISelectField>) => {
     setSelectedOption(newValue);
   };
 
@@ -38,9 +43,10 @@ const GameInfoSection: FC<GameInfoSectionProps> = ({ game, isLoading }) => {
         <div className={styles['top-wrapper']}>
           <h3 className={styles['game-name']}>{game?.name}</h3>
           <CustomSelect
-            handleSelectChange={handleSelectChange}
-            options={options}
+            setSelectedOption={handleSelectChange}
+            options={singleGameOptions}
             selectedOption={selectedOption}
+            width={ECustomInputWidth.MEDIUM}
           />
         </div>
         <div className={styles['game-platforms']}>
@@ -62,7 +68,7 @@ const GameInfoSection: FC<GameInfoSectionProps> = ({ game, isLoading }) => {
             </Button>
             <LinkComponent
               to="#comments"
-              color={EnumColors.WHITE}
+              color={EnumColors.BLACK}
               sizes={EnumSizes.MEDIUM}
             >
               Leave comment
