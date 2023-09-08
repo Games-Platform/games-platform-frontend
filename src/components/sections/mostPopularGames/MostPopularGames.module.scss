@@ -1,0 +1,19 @@
+@import '@/assets/utils/_Variables.scss';
+
+.popularGamesSection {
+  margin-top: 90px;
+}
+
+.selectsWrapper {
+  display: flex;
+  margin-top: 60px;
+  gap: 70px;
+}
+
+.cardList {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  margin-top: 50px;
+  row-gap: 50px;
+}

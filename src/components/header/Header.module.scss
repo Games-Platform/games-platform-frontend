@@ -32,15 +32,15 @@
   border-radius: 5px;
 }
 
+.svgIcon {
+  margin-left: 6px;
+  z-index: 2;
+}
+
 .navLink {
   @include flex-center;
   height: 50px;
   margin-right: 42px;
   cursor: pointer;
   @include hover(text-shadow, $shadow-white);
-}
-
-.svgIcon {
-  margin-left: 6px;
-  z-index: 2;
 }

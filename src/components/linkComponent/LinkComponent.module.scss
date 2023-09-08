@@ -4,9 +4,13 @@
 .link {
   @include flex-center;
   height: 40px;
-  font-weight: $fw-400;
+  font-weight: $fw-600;
   border: 0;
   border-radius: 5px;
+
+  &:active {
+    transform: scale(0.97);
+  }
 }
 
 .small {
@@ -22,7 +26,7 @@
   @include hover(background-color, $color-orange-2);
 }
 
-.white {
-  background: $color-rare-white;
-  @include hover(background-color, $color-grey);
+.black {
+  background: $color-rare-coal;
+  @include hover(background-color, $color-coal);
 }
