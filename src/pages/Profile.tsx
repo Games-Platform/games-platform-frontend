@@ -1,10 +1,15 @@
-import Container from '../components/container/Container';
+import Container from '@/components/container/Container';
+import useAuth from '@/hooks/useAuth';
 
-const Profile = () => (
-  <main>
-    <Container>
-      <p>Profile</p>
-    </Container>
-  </main>
-);
+const Profile = () => {
+  const { userData } = useAuth();
+  return (
+    <main>
+      <Container>
+        <p>{userData?.username}</p>
+        <p>{userData?.email}</p>
+      </Container>
+    </main>
+  );
+};
 export default Profile;

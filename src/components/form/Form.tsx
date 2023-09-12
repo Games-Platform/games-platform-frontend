@@ -1,20 +1,20 @@
+import { useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
 import toast from 'react-hot-toast';
-import Button from '../button/Button';
-import ErrorMessage from '../errorMessage/ErrorMessage';
-import Input from '../input/Input';
+import Button from '@/components/button/Button';
+import ErrorMessage from '@/components/errorMessage/ErrorMessage';
+import Input from '@/components/input/Input';
+import Google from '@/components/icons/Google';
 import { Inputs } from '@/types/Types';
 import {
-  useCheckUserQuery,
   useLoginUserMutation,
   useRegisterUserMutation,
 } from '@/store/services/auth';
 import { loginSchema, registerSchema } from './schemas';
+
 import styles from './Form.module.scss';
-import Google from '../icons/Google';
 
 interface FormProps {
   children: string | JSX.Element | JSX.Element[];
@@ -38,10 +38,8 @@ const Form: React.FC<FormProps> = ({ children, isRegister }) => {
     resolver: yupResolver(isRegister ? registerSchema : loginSchema),
   });
 
-  const [
-    loginUser,
-    { data: loggedUserData, error, isError, isLoading, isSuccess },
-  ] = useLoginUserMutation();
+  const [loginUser, { data: loggedUserData, error, isError, isSuccess }] =
+    useLoginUserMutation();
 
   const [
     registerUser,
@@ -49,21 +47,16 @@ const Form: React.FC<FormProps> = ({ children, isRegister }) => {
       data: registerUserData,
       error: registerError,
       isError: registerIsError,
-      isLoading: registerIsLoading,
       isSuccess: registerIsSuccess,
     },
   ] = useRegisterUserMutation();
 
-  const { refetch } = useCheckUserQuery(null);
-
   const onLogin: SubmitHandler<Inputs> = async (data) => {
     await loginUser(data);
-    refetch();
   };
 
   const onRegister: SubmitHandler<Inputs> = async (data) => {
     await registerUser(data);
-    refetch();
   };
 
   useEffect(() => {
