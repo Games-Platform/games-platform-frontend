@@ -17,6 +17,12 @@ export const authService = apiService.injectEndpoints({
         body,
       }),
     }),
+    refreshToken: builder.mutation<{ accessToken: string }, null>({
+      query: () => ({
+        url: 'auth/refresh',
+        method: 'post',
+      }),
+    }),
     checkUser: builder.query<IUser, null>({
       query: () => ({
         url: 'auth/profile',
@@ -35,6 +41,7 @@ export const authService = apiService.injectEndpoints({
 export const {
   useRegisterUserMutation,
   useLoginUserMutation,
+  useRefreshTokenMutation,
   useCheckUserQuery,
   useLogoutMutation,
 } = authService;

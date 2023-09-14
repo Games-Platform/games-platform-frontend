@@ -3,14 +3,11 @@ import { NavLink } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import styles from '@/components/dropdown/DropDown.module.scss';
 import { useLogoutMutation } from '@/store/services/auth';
-import useAuth from '@/hooks/useAuth';
 import Avatar from '@/components/avatar/Avatar';
-import { dropDownItems } from '@//utils/GlobalVars';
+import { dropDownItems } from '@/utils/GlobalVars';
 
 const DropDown = () => {
   const [dropdownState, setDropdownState] = useState(false);
-
-  const { refetch } = useAuth();
 
   const [logout, { isError, isSuccess }] = useLogoutMutation();
 
@@ -25,7 +22,6 @@ const DropDown = () => {
   const handleLogout = async (e: React.SyntheticEvent) => {
     if ((e.target as HTMLLinkElement).textContent === 'Logout') {
       await logout(null);
-      refetch();
     }
   };
 

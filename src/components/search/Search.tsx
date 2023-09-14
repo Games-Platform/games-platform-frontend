@@ -31,9 +31,7 @@ const Search: FC<SearchProps> = ({
 
   const navigate = useNavigate();
 
-  const { data, isLoading, isSuccess } = useGetSearchedQuery({
-    query: deferredQuery,
-  });
+  const { data } = useGetSearchedQuery({ query: deferredQuery });
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
