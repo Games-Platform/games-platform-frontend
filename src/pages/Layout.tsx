@@ -7,7 +7,7 @@ import {
 } from '@/store/services/auth';
 import useAuth from '@/hooks/useAuth';
 
-import '@/assets/styles/_global.scss';
+import '@/assets/styles/_Global.scss';
 
 const Layout = () => {
   const { isAuth } = useAuth();

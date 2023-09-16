@@ -2,7 +2,7 @@ import Container from '@/components/container/Container';
 
 import Form from '@/components/form/Form';
 
-import '@/assets/styles/_global.scss';
+import '@/assets/styles/_Global.scss';
 
 const Login = () => (
   <main>
