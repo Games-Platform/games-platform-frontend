@@ -1,21 +1,25 @@
 import { FC, useState } from 'react';
-import classNames from 'classnames';
 import { toast } from 'react-hot-toast';
-import Star from '../icons/Star';
+import classNames from 'classnames';
+import { useVoteForGameMutation } from '@/store/services/games';
+import Star from '@/components/icons/Star';
 
 import styles from './StarRating.module.scss';
 
 interface StarRatingProps {
   onClose: () => void;
+  game_id: number | undefined;
 }
 
-const StarRating: FC<StarRatingProps> = ({ onClose }) => {
+const StarRating: FC<StarRatingProps> = ({ onClose, game_id }) => {
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
+  const [voteForGame] = useVoteForGameMutation();
   const handleClick = (index: number) => {
-    // TODO Need to get voice from DB
     setRating(index);
     onClose();
+    voteForGame({ game_id, value: index });
+
     toast.success('Well done! Your voice was accepted');
   };
   return (

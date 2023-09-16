@@ -115,3 +115,8 @@ export const enum ECustomInputWidth {
   SMALL = '175px',
   MEDIUM = '250px',
 }
+
+export interface IVoteGame {
+  game_id: number | undefined;
+  value: number;
+}
