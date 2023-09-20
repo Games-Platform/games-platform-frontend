@@ -20,15 +20,17 @@ interface StarRatingProps {
 }
 
 const StarRating: FC<StarRatingProps> = ({ onClose, game }) => {
-  const { data, isSuccess, refetch } = useGetGameRatingQuery(game, {
-    skip: !game,
-  });
-
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
+
   const { refetch: gameRatingRefetch } = useRating(game);
   const { isAuth } = useAuth();
+
   const navigate = useNavigate();
+
+  const { data, isSuccess, refetch } = useGetGameRatingQuery(game, {
+    skip: !game || !isAuth,
+  });
 
   const [createUserGame] = useCreateUserGameMutation();
   const [setGameRating] = useSetGameRatingMutation();
@@ -43,7 +45,7 @@ const StarRating: FC<StarRatingProps> = ({ onClose, game }) => {
     setRating(index);
 
     try {
-      if (game) {
+      if (game && data && !data?.rating) {
         await createUserGame({ game });
       }
 
@@ -70,7 +72,7 @@ const StarRating: FC<StarRatingProps> = ({ onClose, game }) => {
   };
 
   useEffect(() => {
-    if (isSuccess) {
+    if (isSuccess && data.rating) {
       setRating(data.rating);
     }
   }, [isSuccess]);

@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { Message, SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import toast from 'react-hot-toast';
@@ -61,7 +61,7 @@ const Form: React.FC<FormProps> = ({ children, isRegister }) => {
 
   useEffect(() => {
     if (isSuccess) {
-      toast.success(loggedUserData?.message);
+      toast.success(loggedUserData?.message as Message);
       navigate(from, { replace: true });
     }
 
@@ -74,7 +74,7 @@ const Form: React.FC<FormProps> = ({ children, isRegister }) => {
 
   useEffect(() => {
     if (registerIsSuccess) {
-      toast.success(registerUserData?.message);
+      toast.success(registerUserData?.message as Message);
       navigate(from, { replace: true });
     }
 

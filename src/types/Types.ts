@@ -32,10 +32,8 @@ export interface ILoginUser {
   password: string;
 }
 
-export interface IRegisterUser {
+export interface IRegisterUser extends ILoginUser {
   username?: string;
-  email: string;
-  password: string;
 }
 
 export interface Inputs {
@@ -86,6 +84,11 @@ export interface ILocalGame {
   games_platform_rating: number;
 }
 
+export interface ILocalDBGame extends ILocalGame {
+  id: string;
+  rating_votes: number;
+}
+
 export interface IGames {
   count: number;
   next: string | null;
@@ -121,15 +124,22 @@ export const enum EGameStatus {
   PLAYING_NOW = 1,
   PLAY_LATER = 2,
   FINISHED = 3,
+  REMOVE = 4,
 }
 
 export interface IUserGame {
   game: number;
   rating?: number;
-  status?: EGameStatus;
+  status?: number;
 }
 export interface IVoteGame {
   game_id: number | undefined;
   value: number;
   vote: 1 | 0;
+}
+
+export interface IUserDBGame extends IUserGame, ILocalGame, IUser {}
+
+export interface IMessage {
+  message: string;
 }

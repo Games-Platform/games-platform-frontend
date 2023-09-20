@@ -68,11 +68,11 @@ const CustomSelect: FC<IProps> = ({
 
   return (
     <Select
-      defaultValue={selectedOption}
       onChange={setSelectedOption}
       options={options}
       styles={styles}
       isSearchable={false}
+      value={selectedOption}
     />
   );
 };

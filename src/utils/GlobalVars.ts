@@ -25,8 +25,8 @@ export const platformOptions = [
 
 export const singleGameOptions = [
   { value: 0, label: 'Add game to your account' },
-  { value: 3, label: 'Finished!' },
   { value: 1, label: 'Playing now!' },
   { value: 2, label: 'Want to play later!' },
+  { value: 3, label: 'Finished!' },
   { value: 4, label: 'Remove from account' },
 ];
