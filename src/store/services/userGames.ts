@@ -6,40 +6,40 @@ export const userGamesService = apiService.injectEndpoints({
     createUserGame: builder.mutation({
       query: (body: IUserGame) => ({
         url: 'user-game/create',
-        method: 'post',
+        method: 'POST',
         body,
       }),
     }),
     setGameRating: builder.mutation({
       query: (body: IUserGame) => ({
         url: 'user-game/set-rating',
-        method: 'patch',
+        method: 'PATCH',
         body,
       }),
     }),
     setGameStatus: builder.mutation({
       query: (body: IUserGame) => ({
         url: 'user-game/set-status',
-        method: 'patch',
+        method: 'PATCH',
         body,
       }),
     }),
     getGameRating: builder.query({
       query: (gameId: number | undefined) => ({
         url: `user-game/get-rating/${gameId && gameId}`,
-        method: 'get',
+        method: 'GET',
       }),
     }),
     getGameStatus: builder.query({
       query: (gameId: number) => ({
         url: `user-game/get-status/${gameId}`,
-        method: 'get',
+        method: 'GET',
       }),
     }),
     getUserGames: builder.query({
       query: () => ({
         url: 'user-game/get-user-games',
-        method: 'get',
+        method: 'GET',
       }),
     }),
   }),

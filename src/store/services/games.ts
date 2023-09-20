@@ -1,4 +1,4 @@
-import { ILocalGame } from '@/types/Types';
+import { ILocalGame, IVoteGame } from '@/types/Types';
 import apiService from './api';
 
 export const gamesService = apiService.injectEndpoints({
@@ -10,7 +10,24 @@ export const gamesService = apiService.injectEndpoints({
         body,
       }),
     }),
+    getRating: builder.query({
+      query: (game_id: number | undefined) => ({
+        url: `games/rating/${game_id}`,
+        method: 'get',
+      }),
+    }),
+    voteForGame: builder.mutation({
+      query: (body: IVoteGame) => ({
+        url: 'games/vote',
+        method: 'post',
+        body,
+      }),
+    }),
   }),
 });
 
-export const { useCreateGameMutation } = gamesService;
+export const {
+  useCreateGameMutation,
+  useVoteForGameMutation,
+  useGetRatingQuery,
+} = gamesService;

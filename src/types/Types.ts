@@ -128,3 +128,7 @@ export interface IUserGame {
   rating?: number;
   status?: EGameStatus;
 }
+export interface IVoteGame {
+  game_id: number | undefined;
+  value: number;
+}

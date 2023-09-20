@@ -6,6 +6,7 @@ import {
   useGetGameRatingQuery,
   useSetGameRatingMutation,
 } from '@/store/services/userGames';
+import { useVoteForGameMutation } from '@/store/services/games';
 import Star from '../icons/Star';
 
 import styles from './StarRating.module.scss';
@@ -25,6 +26,7 @@ const StarRating: FC<StarRatingProps> = ({ onClose, game }) => {
   const [hover, setHover] = useState(0);
   const [createUserGame] = useCreateUserGameMutation();
   const [setGameRating] = useSetGameRatingMutation();
+  const [voteForGame] = useVoteForGameMutation();
   const handleClick = async (index: number) => {
     // TODO Need to get voice from DB
     setRating(index);
@@ -32,6 +34,8 @@ const StarRating: FC<StarRatingProps> = ({ onClose, game }) => {
       await createUserGame({ game });
     }
     onClose();
+    voteForGame({ game_id: game, value: index });
+
     toast.success('Well done! Your voice was accepted');
   };
 

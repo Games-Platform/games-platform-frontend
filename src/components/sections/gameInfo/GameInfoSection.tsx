@@ -2,6 +2,11 @@ import React, { FC, useCallback, useState } from 'react';
 import { SingleValue } from 'react-select';
 import Container from '@/components/container/Container';
 import CustomSelect from '@/components/customSelect/CustomSelect';
+import StarRating from '@/components/starRating/StarRating';
+import Button from '@/components/button/Button';
+import LinkComponent from '@/components/linkComponent/LinkComponent';
+import { singleGameOptions } from '@/utils/GlobalVars';
+import useRating from '@/hooks/useRating';
 import setPlatforms from '@/helpers/setPlatform';
 import {
   ECustomInputWidth,
@@ -12,10 +17,6 @@ import {
 } from '@/types/Types';
 
 import styles from './GameInfoSection.module.scss';
-import StarRating from '@/components/starRating/StarRating';
-import Button from '@/components/button/Button';
-import LinkComponent from '@/components/linkComponent/LinkComponent';
-import { singleGameOptions } from '@/utils/GlobalVars';
 
 interface GameInfoSectionProps {
   game: IGame | undefined;
@@ -36,6 +37,8 @@ const GameInfoSection: FC<GameInfoSectionProps> = ({ game, isLoading }) => {
   const handleChangeRatingOpen = useCallback(() => {
     setIsRatingOpen((prev) => !prev);
   }, []);
+
+  const { rating } = useRating(game?.id);
 
   return (
     <section className={styles['game-info']}>
@@ -86,7 +89,7 @@ const GameInfoSection: FC<GameInfoSectionProps> = ({ game, isLoading }) => {
           </div>
           <div className={styles['game-rating']}>
             Games platform:
-            <span className={styles['game-value']}>0</span>
+            <span className={styles['game-value']}>{rating}</span>
           </div>
         </div>
       </Container>
