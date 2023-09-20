@@ -25,8 +25,8 @@ export const userGamesService = apiService.injectEndpoints({
       }),
     }),
     getGameRating: builder.query({
-      query: (gameId: number) => ({
-        url: `user-game/get-rating/${gameId}`,
+      query: (gameId: number | undefined) => ({
+        url: `user-game/get-rating/${gameId && gameId}`,
         method: 'get',
       }),
     }),

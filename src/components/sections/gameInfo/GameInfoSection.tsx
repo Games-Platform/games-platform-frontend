@@ -74,7 +74,9 @@ const GameInfoSection: FC<GameInfoSectionProps> = ({ game, isLoading }) => {
               Leave comment
             </LinkComponent>
           </div>
-          {isRatingOpen && <StarRating onClose={handleChangeRatingOpen} />}
+          {isRatingOpen && (
+            <StarRating onClose={handleChangeRatingOpen} game={game?.id} />
+          )}
         </>
         <p className={styles['game-description']}>{game?.description_raw}</p>
         <div className={styles['game-ratings']}>
