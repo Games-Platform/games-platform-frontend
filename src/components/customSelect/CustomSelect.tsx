@@ -29,10 +29,7 @@ const CustomSelect: FC<IProps> = ({
       width,
       fontSize: '14px',
     }),
-    control: (
-      baseStyles: CSSObjectWithLabel,
-      state: ControlProps<ISelectField, false, GroupBase<ISelectField>>,
-    ) => ({
+    control: (baseStyles: CSSObjectWithLabel) => ({
       ...baseStyles,
       borderColor: '#727272',
       backgroundColor: '#212121',

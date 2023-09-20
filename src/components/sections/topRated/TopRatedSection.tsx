@@ -1,4 +1,3 @@
-import { NavLink } from 'react-router-dom';
 import mocks from './mocks';
 import styles from './TopRatedSection.module.scss';
 import Container from '../../container/Container';

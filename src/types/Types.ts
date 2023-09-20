@@ -102,7 +102,7 @@ export interface IGetSingleGame {
 }
 
 export interface ISelectField {
-  value: string;
+  value: string | number;
   label: string;
 }
 
@@ -114,4 +114,17 @@ export type TSelectOnChange = (
 export const enum ECustomInputWidth {
   SMALL = '175px',
   MEDIUM = '250px',
+}
+
+export const enum EGameStatus {
+  NOT_ADDED = 0,
+  PLAYING_NOW = 1,
+  PLAY_LATER = 2,
+  FINISHED = 3,
+}
+
+export interface IUserGame {
+  game: number;
+  rating?: number;
+  status?: EGameStatus;
 }
