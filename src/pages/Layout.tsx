@@ -17,7 +17,7 @@ const Layout = () => {
   const [logout] = useLogoutMutation();
 
   useEffect(() => {
-    if (isAuth && !refreshError) {
+    if (isAuth) {
       refreshToken(null);
     }
 

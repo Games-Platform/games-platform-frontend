@@ -131,4 +131,5 @@ export interface IUserGame {
 export interface IVoteGame {
   game_id: number | undefined;
   value: number;
+  vote: 1 | 0;
 }
