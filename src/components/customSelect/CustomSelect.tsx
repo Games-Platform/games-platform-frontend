@@ -1,8 +1,4 @@
-import Select, {
-  CSSObjectWithLabel,
-  ControlProps,
-  GroupBase,
-} from 'react-select';
+import Select, { CSSObjectWithLabel } from 'react-select';
 import { FC } from 'react';
 import {
   ECustomInputWidth,

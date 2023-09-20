@@ -1,9 +1,10 @@
-import mocks from './mocks';
-import styles from './TopRatedSection.module.scss';
-import Container from '../../container/Container';
-import TopRatedCard from '../../topRatedCard/TopRatedCard';
-import LinkComponent from '../../linkComponent/LinkComponent';
+import Container from '@/components/container/Container';
+import TopRatedCard from '@/components/topRatedCard/TopRatedCard';
+import LinkComponent from '@/components/linkComponent/LinkComponent';
 import { EnumColors, EnumSizes } from '@/types/Types';
+import mocks from './mocks';
+
+import styles from './TopRatedSection.module.scss';
 
 const TopRatedSection = () => (
   <section className={styles.topRated}>
@@ -11,10 +12,6 @@ const TopRatedSection = () => (
       <div className={styles.topRatedWrapper}>
         <div className={styles.topRatedInfo}>
           <h3 className={styles.topRatedTitle}>Top rated games</h3>
-
-          {/* <NavLink className={styles.topRatedLink} to="/popular">
-            SEE ALL
-          </NavLink> */}
 
           <LinkComponent
             to="/popular"
