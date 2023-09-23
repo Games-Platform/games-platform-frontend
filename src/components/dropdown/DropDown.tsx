@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import styles from '@/components/dropdown/DropDown.module.scss';
 import { useLogoutMutation } from '@/store/services/auth';
@@ -8,6 +8,10 @@ import { dropDownItems } from '@/utils/GlobalVars';
 
 const DropDown = () => {
   const [dropdownState, setDropdownState] = useState(false);
+
+  const { pathname } = useLocation();
+
+  const navigate = useNavigate();
 
   const [logout, { isError, isSuccess }] = useLogoutMutation();
 
@@ -22,6 +26,7 @@ const DropDown = () => {
   const handleLogout = async (e: React.SyntheticEvent) => {
     if ((e.target as HTMLLinkElement).textContent === 'Logout') {
       await logout(null);
+      navigate(pathname);
     }
   };
 

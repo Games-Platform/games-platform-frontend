@@ -1,26 +1,85 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { toast } from 'react-hot-toast';
-import Star from '../icons/Star';
+import { useNavigate } from 'react-router';
+import Star from '@/components/icons/Star';
+import {
+  useCreateUserGameMutation,
+  useGetGameRatingQuery,
+  useSetGameRatingMutation,
+} from '@/store/services/userGames';
+import { useVoteForGameMutation } from '@/store/services/games';
+import useAuth from '@/hooks/useAuth';
+import useRating from '@/hooks/useRating';
 
 import styles from './StarRating.module.scss';
 
 interface StarRatingProps {
   onClose: () => void;
+  game: number | undefined;
 }
 
-const StarRating: FC<StarRatingProps> = ({ onClose }) => {
+const StarRating: FC<StarRatingProps> = ({ onClose, game }) => {
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
-  const handleClick = (index: number) => {
-    // TODO Need to get voice from DB
+
+  const { refetch: gameRatingRefetch } = useRating(game);
+  const { isAuth } = useAuth();
+
+  const navigate = useNavigate();
+
+  const { data, isSuccess, refetch } = useGetGameRatingQuery(game, {
+    skip: !game || !isAuth,
+  });
+
+  const [createUserGame] = useCreateUserGameMutation();
+  const [setGameRating] = useSetGameRatingMutation();
+  const [voteForGame] = useVoteForGameMutation();
+
+  const handleClick = async (index: number) => {
+    if (!isAuth) {
+      navigate('/login');
+      return;
+    }
+
     setRating(index);
-    onClose();
-    toast.success('Well done! Your voice was accepted');
+
+    try {
+      if (game && data && !data?.rating) {
+        await createUserGame({ game });
+      }
+
+      if (isSuccess) {
+        await voteForGame({
+          game_id: game,
+          value: index - data.rating,
+          vote: data.rating > 0 ? 0 : 1,
+        });
+      }
+
+      if (game) {
+        await setGameRating({ game, rating: index });
+        await gameRatingRefetch();
+        await refetch();
+      }
+
+      toast.success('Well done! Your voice was accepted');
+    } catch (error) {
+      toast.error('Something went wrong');
+    } finally {
+      onClose();
+    }
   };
+
+  useEffect(() => {
+    if (isSuccess && data.rating) {
+      setRating(data.rating);
+    }
+  }, [isSuccess]);
+
   return (
     <div className={styles['star-rating']}>
-      {[...Array(5)].map((star, index) => (
+      {[...Array(5)].map((_, index) => (
         <button
           type="button"
           key={Math.random()}

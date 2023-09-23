@@ -1,23 +1,24 @@
-import { ILoginUser, IRegisterUser, IUser } from '@/types/Types';
+import { ILoginUser, IMessage, IRegisterUser, IUser } from '@/types/Types';
 import apiService from './api';
 
 export const authService = apiService.injectEndpoints({
   endpoints: (builder) => ({
-    registerUser: builder.mutation({
-      query: (body: IRegisterUser) => ({
+    registerUser: builder.mutation<IMessage, IRegisterUser>({
+      // <ReturnTypes, ArgumentTypes>
+      query: (body) => ({
         url: 'auth/register',
         method: 'post',
         body,
       }),
     }),
-    loginUser: builder.mutation({
-      query: (body: ILoginUser) => ({
+    loginUser: builder.mutation<IMessage, ILoginUser>({
+      query: (body) => ({
         url: 'auth/login',
         method: 'post',
         body,
       }),
     }),
-    refreshToken: builder.mutation<{ accessToken: string }, null>({
+    refreshToken: builder.mutation<{ status: string }, null>({
       query: () => ({
         url: 'auth/refresh',
         method: 'post',
@@ -29,7 +30,7 @@ export const authService = apiService.injectEndpoints({
         method: 'get',
       }),
     }),
-    logout: builder.mutation({
+    logout: builder.mutation<IMessage, null>({
       query: () => ({
         url: 'auth/logout',
         method: 'post',

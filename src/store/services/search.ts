@@ -20,7 +20,8 @@ export const searchService = createApi({
   tagTypes: ['Search'],
   endpoints: (builder) => ({
     getSearched: builder.query<IGames, ISearchParams>({
-      query: (body: ISearchParams) => ({
+      // <ReturnTypes, ArgumentTypes>
+      query: (body) => ({
         url: body.query
           ? `https://api.rawg.io/api/games?key=${
               import.meta.env.VITE_API_KEY
@@ -30,7 +31,7 @@ export const searchService = createApi({
       }),
     }),
     getSingleGame: builder.query<IGame, IGetSingleGame>({
-      query: (body: IGetSingleGame) => ({
+      query: (body) => ({
         url: `https://api.rawg.io/api/games/${body.id}?key=${
           import.meta.env.VITE_API_KEY
         }`,

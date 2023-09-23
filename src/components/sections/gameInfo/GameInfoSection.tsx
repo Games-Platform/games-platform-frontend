@@ -1,10 +1,23 @@
-import React, { FC, useCallback, useState } from 'react';
+import React, { FC, useCallback, useEffect, useState } from 'react';
 import { SingleValue } from 'react-select';
+import { useNavigate } from 'react-router';
 import Container from '@/components/container/Container';
 import CustomSelect from '@/components/customSelect/CustomSelect';
+import StarRating from '@/components/starRating/StarRating';
+import Button from '@/components/button/Button';
+import LinkComponent from '@/components/linkComponent/LinkComponent';
+import {
+  useCreateUserGameMutation,
+  useGetGameStatusQuery,
+  useSetGameStatusMutation,
+} from '@/store/services/userGames';
+import useRating from '@/hooks/useRating';
+import useAuth from '@/hooks/useAuth';
 import setPlatforms from '@/helpers/setPlatform';
+import { singleGameOptions } from '@/utils/GlobalVars';
 import {
   ECustomInputWidth,
+  EGameStatus,
   EnumColors,
   EnumSizes,
   IGame,
@@ -12,10 +25,6 @@ import {
 } from '@/types/Types';
 
 import styles from './GameInfoSection.module.scss';
-import StarRating from '@/components/starRating/StarRating';
-import Button from '@/components/button/Button';
-import LinkComponent from '@/components/linkComponent/LinkComponent';
-import { singleGameOptions } from '@/utils/GlobalVars';
 
 interface GameInfoSectionProps {
   game: IGame | undefined;
@@ -25,17 +34,52 @@ interface GameInfoSectionProps {
 const GameInfoSection: FC<GameInfoSectionProps> = ({ game, isLoading }) => {
   const [selectedOption, setSelectedOption] = useState<
     SingleValue<ISelectField>
-  >(singleGameOptions[0]);
-
+  >(singleGameOptions[EGameStatus.NOT_ADDED]);
   const [isRatingOpen, setIsRatingOpen] = useState(false);
 
+  const navigate = useNavigate();
+
+  const { isAuth } = useAuth();
+  const { rating } = useRating(game?.id);
+
+  const { data: gameStatus, isSuccess: gameStatusIsSuccess } =
+    useGetGameStatusQuery(game?.id, {
+      skip: !game?.id || !isAuth,
+    });
+  const [setGameStatus] = useSetGameStatusMutation();
+  const [createUserGame] = useCreateUserGameMutation();
+
   const handleSelectChange = (newValue: SingleValue<ISelectField>) => {
+    if (!isAuth) {
+      navigate('/login');
+      return;
+    }
+
     setSelectedOption(newValue);
+
+    if (game && gameStatus && !gameStatus?.status) {
+      createUserGame({ game: game.id });
+    }
+
+    if (game && newValue) {
+      setGameStatus({ game: game.id, status: Number(newValue.value) });
+    }
+
+    if (newValue?.value === EGameStatus.REMOVE && game) {
+      setGameStatus({ game: game.id, status: 0 });
+      setSelectedOption(singleGameOptions[EGameStatus.NOT_ADDED]);
+    }
   };
 
   const handleChangeRatingOpen = useCallback(() => {
     setIsRatingOpen((prev) => !prev);
   }, []);
+
+  useEffect(() => {
+    if (gameStatusIsSuccess) {
+      setSelectedOption(singleGameOptions[gameStatus.status]);
+    }
+  }, [gameStatusIsSuccess]);
 
   return (
     <section className={styles['game-info']}>
@@ -74,17 +118,21 @@ const GameInfoSection: FC<GameInfoSectionProps> = ({ game, isLoading }) => {
               Leave comment
             </LinkComponent>
           </div>
-          {isRatingOpen && <StarRating onClose={handleChangeRatingOpen} />}
+          {isRatingOpen && (
+            <StarRating onClose={handleChangeRatingOpen} game={game?.id} />
+          )}
         </>
         <p className={styles['game-description']}>{game?.description_raw}</p>
         <div className={styles['game-ratings']}>
           <div className={styles['game-rating']}>
             Metacritic:
-            <span className={styles['game-value']}>{game?.metacritic}</span>
+            <span className={styles['game-value']}>
+              {game?.metacritic || 0}
+            </span>
           </div>
           <div className={styles['game-rating']}>
             Games platform:
-            <span className={styles['game-value']}>0</span>
+            <span className={styles['game-value']}>{rating || 0}</span>
           </div>
         </div>
       </Container>

@@ -1,8 +1,4 @@
-import Select, {
-  CSSObjectWithLabel,
-  ControlProps,
-  GroupBase,
-} from 'react-select';
+import Select, { CSSObjectWithLabel } from 'react-select';
 import { FC } from 'react';
 import {
   ECustomInputWidth,
@@ -29,10 +25,7 @@ const CustomSelect: FC<IProps> = ({
       width,
       fontSize: '14px',
     }),
-    control: (
-      baseStyles: CSSObjectWithLabel,
-      state: ControlProps<ISelectField, false, GroupBase<ISelectField>>,
-    ) => ({
+    control: (baseStyles: CSSObjectWithLabel) => ({
       ...baseStyles,
       borderColor: '#727272',
       backgroundColor: '#212121',
@@ -75,11 +68,11 @@ const CustomSelect: FC<IProps> = ({
 
   return (
     <Select
-      defaultValue={selectedOption}
       onChange={setSelectedOption}
       options={options}
       styles={styles}
       isSearchable={false}
+      value={selectedOption}
     />
   );
 };
